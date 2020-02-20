@@ -5,6 +5,9 @@ import ru.itis.infosecurity.forms.BaseForm;
 import ru.itis.infosecurity.forms.ContextForm;
 import ru.itis.infosecurity.forms.TimeForm;
 
+import javax.swing.text.MutableAttributeSet;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -51,11 +54,26 @@ public class CalculationService {
 
     public double calculateContextMetrix(ContextForm contextForm) {
         addParamsForContext(contextForm);
-        double adjustedImpact = Math.min(10, 10.41 * (1 - (1 - params.get("C") * params.get("CR")) *
-                (1 - params.get("I") * params.get("IR")) * (1 - params.get("A") * params.get("AR"))));
-        double adjustedBaseScore = (((0.6 * adjustedImpact) + (0.4 * exploitability) - 1.5) * fImpact);
-        double adjustedTemporal = adjustedBaseScore * params.get("E") * params.get("RL") * params.get("RC");
-        environmentalScore = ((adjustedTemporal + (10 - adjustedTemporal) * params.get("CDP"))* params.get("TD"));
+        double mImpact;
+        double mImpactBase = Math.min((1 - (1 - params.get("MC") * params.get("CR")) * (1 - params.get("MI") * params.get("IR")) * (1 - params.get("MA") * params.get("AR"))), 0.915);
+        double mExploitability = 8.22 * params.get("MAV") * params.get("MAC") * params.get("MPR") * params.get("MUI");
+        if(params.get("MS") == 0.0) {
+            mImpact = 6.42 * mImpactBase;
+        } else {
+            mImpact = 7.52 * (mImpactBase - 0.029) - 3.25 * (Math.pow(mImpactBase - 0.02, 15));
+        }
+        if(mImpact <= 0.0) {
+            environmentalScore = 0;
+        } else if(params.get("MS") == 0.0) {
+            double res = (Math.min((mImpact + mExploitability), 10));
+            double result = new BigDecimal(res).setScale(1,RoundingMode.UP).doubleValue();
+            environmentalScore = result * params.get("E") * params.get("RL") * params.get("RC");
+        } else {
+            double res = (Math.min((1.08 * (mImpact + mExploitability)), 10));
+            double result = new BigDecimal(res).setScale(1,RoundingMode.UP).doubleValue();
+            environmentalScore = result * params.get("E") * params.get("RL") * params.get("RC");
+
+        }
         return environmentalScore;
     }
 
@@ -243,13 +261,13 @@ public class CalculationService {
         String MAC = contextForm.getMAC();
         switch (MAC) {
             case "X":
-                params.put("X", params.get("AC") );
+                params.put("MAC", params.get("AC") );
                 break;
             case "L":
-                params.put("X", 0.77);
+                params.put("MAC", 0.77);
                 break;
             case "H":
-                params.put("X", 0.44);
+                params.put("MAC", 0.44);
                 break;
         }
         String MS = contextForm.getMS();
@@ -257,13 +275,13 @@ public class CalculationService {
             case "X":
                 params.put("MS", params.get("S"));
                 break;
-            case "N":
+            case "U":
                 params.put("MS", 0.0);
                 break;
             case "C":
                 params.put("MS", 1.0);
         }
-        String MPR = contextForm.getCR();
+        String MPR = contextForm.getMPR();
         switch (MPR) {
             case "X":
                 params.put("MPR", params.get("PR"));
@@ -272,16 +290,18 @@ public class CalculationService {
                 params.put("MPR", 0.85);
                 break;
             case "L":
-                if(params.get("MS") == 1) {
+                if(params.get("MS") == 1.0) {
                     params.put("MPR", 0.68);
+                } else {
+                    params.put("MPR", 0.62);
                 }
-                params.put("MPR", 0.62);
                 break;
             case "H":
-                if(params.get("MS") == 1) {
+                if(params.get("MS") == 1.0) {
                     params.put("MPR", 0.5);
+                } else {
+                    params.put("MPR", 0.27);
                 }
-                params.put("MPR", 0.27);
                 break;
         }
         String MUI = contextForm.getMUI();
@@ -328,7 +348,7 @@ public class CalculationService {
                 break;
         }
 
-        String MA = contextForm.getMC();
+        String MA = contextForm.getMA();
         switch (MA) {
             case "X":
                 params.put("MA", params.get("A"));

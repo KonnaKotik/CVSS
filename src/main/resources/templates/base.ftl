@@ -48,31 +48,31 @@
                             </div>
                             <div class="col-lg-12">
                                 <h4>Уровень привилегий (PR):</h4>
-                                <form class="btn-group btn-group-justified" id="pr">
+                                <form class="btn-group btn-group-justified" id="PR">
                                     <input type="radio" role="button" class="radio" data-bs-group="PR"
-                                           value="N" name="pr"/>Высокая (H)
+                                           value="N" name="PR"/>Высокая (H)
                                     <input type="radio" role="button" class="radio" data-bs-group="PR"
-                                           value="L" name="pr"/>Низкая (L)
+                                           value="L" name="PR"/>Низкая (L)
                                     <input type="radio" role="button" class="radio" data-bs-group="PR"
-                                           value="H" name="pr"/>Не требуется (N)
+                                           value="H" name="PR"/>Не требуется (N)
                                 </form>
                             </div>
                             <div class="col-lg-12">
                                 <h4>Взаимодействие с пользователем (UI):</h4>
-                                <form class="btn-group btn-group-justified" id="ui">
+                                <form class="btn-group btn-group-justified" id="UI">
                                     <input type="radio" role="button" class="radio" data-bs-group="UI"
-                                           value="N" name="ui"/>Не требуется (N)
+                                           value="N" name="UI"/>Не требуется (N)
                                     <input type="radio" role="button" class="radio" data-bs-group="UI"
-                                           value="R" name="ui"/>Требуется (R)
+                                           value="R" name="UI"/>Требуется (R)
                                 </form>
                             </div>
                             <div class="col-lg-12">
                                 <h4>Влияние на другие компоненты системы (S):</h4>
-                                <form class="btn-group btn-group-justified" id="s">
+                                <form class="btn-group btn-group-justified" id="S">
                                     <input type="radio" role="button" class="radio" data-bs-group="S"
-                                           value="U" name="s"/>Не оказывает (U)
+                                           value="U" name="S"/>Не оказывает (U)
                                     <input type="radio" role="button" class="radio" data-bs-group="S"
-                                           value="C" name="s"/>Оказывает (C)
+                                           value="C" name="S"/>Оказывает (C)
                                 </form>
                             </div>
 
@@ -210,7 +210,7 @@
 
             <div class="col-lg-12">
                 <h4>Вектор атаки (MAV):</h4>
-                <form class="btn-group btn-group-justified" name="cdp">
+                <form class="btn-group btn-group-justified" name="MAV">
                     <input type="radio" value="X" name="MAV">Не определено (X)
                     <input type="radio" value="N" name="MAV">Сетевая
                     (N)
@@ -279,11 +279,47 @@
             </div>
             <div class="col-lg-12">
                 <h4>Влияние на целостность (корр.) (MI):</h4>
-                <form class="btn-group btn-group-justified" id="MC">
+                <form class="btn-group btn-group-justified" id="MI">
                     <input type="radio" name="MI" value="X">Не определено (X)
                     <input type="radio" name="MI" value="N">Не оказывает (N)
                     <input type="radio" name="MI" value="L">Низкий (L)
                     <input type="radio" name="MI" value="H">Высокое (H)
+                </form>
+            </div>
+            <div class="col-lg-12">
+                <h4>Влияние на доступность (корр.) (MA):</h4>
+                <form class="btn-group btn-group-justified" id="MA">
+                    <input type="radio" name="MA" value="X">Не определено (X)
+                    <input type="radio" name="MA" value="N">Не оказывает (N)
+                    <input type="radio" name="MA" value="L">Низкий (L)
+                    <input type="radio" name="MA" value="H">Высокое (H)
+                </form>
+            </div>
+            <div class="col-lg-12">
+                <h4>Требования к конфиденциальности (CR):</h4>
+                <form class="btn-group btn-group-justified" id="CR">
+                    <input type="radio" name="CR" value="X">Не определено (X)
+                    <input type="radio" name="CR" value="L">Низкий (L)
+                    <input type="radio" name="CR" value="M">Средний (M)
+                    <input type="radio" name="CR" value="H">Высокое (H)
+                </form>
+            </div>
+            <div class="col-lg-12">
+                <h4>Требования к целостности (IR):</h4>
+                <form class="btn-group btn-group-justified" id="IR">
+                    <input type="radio" name="IR" value="X">Не определено (X)
+                    <input type="radio" name="IR" value="L">Низкий (L)
+                    <input type="radio" name="IR" value="M">Средний (M)
+                    <input type="radio" name="IR" value="H">Высокое (H)
+                </form>
+            </div>
+            <div class="col-lg-12">
+                <h4>Требования к доступности (AR):</h4>
+                <form class="btn-group btn-group-justified" id="AR">
+                    <input type="radio" name="AR" value="X">Не определено (X)
+                    <input type="radio" name="AR" value="L">Низкий (L)
+                    <input type="radio" name="AR" value="M">Средний (M)
+                    <input type="radio" name="AR" value="H">Высокое (H)
                 </form>
             </div>
             <button class="button-add" onclick="calculateContext(event)">Calculate</button>
