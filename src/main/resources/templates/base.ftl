@@ -209,65 +209,81 @@
             </div>
 
             <div class="col-lg-12">
-                <h4>Вероятность нанесения косвенного ущерба (CDP):</h4>
+                <h4>Вектор атаки (MAV):</h4>
                 <form class="btn-group btn-group-justified" name="cdp">
-                    <input type="radio" value="ND" name="CDP">Не определено (ND)
-                    <input type="radio" value="N" name="CDP">Отсутствует
+                    <input type="radio" value="X" name="MAV">Не определено (X)
+                    <input type="radio" value="N" name="MAV">Сетевая
                     (N)
-                    <input type="radio" value="L" name="CDP">Низкая
+                    <input type="radio" value="A" name="MAV">Смежная сеть
+                    (A)
+                    <input type="radio" value="L" name="MAV">Локальная
                     (L)
-                    <input type="radio" value="LM" name="CDP">Средняя
-                    (LM)
-                    <input type="radio" value="MH" name="CDP">Повышенная
-                    (MH)
-                    <input type="radio" value="H" name="CDP">Высокая
+                    <input type="radio" value="P" name="MAV">Физическая
+                    (P)
+                </form>
+            </div>
+
+            <div class="col-lg-12">
+                <h4>Сложность атаки(MAC):</h4>
+                <form class="btn-group btn-group-justified" name="MAC">
+                    <input type="radio" name="MAC" value="X">Не определено (X)
+                    <input type="radio" name="MAC" value="H">Высокая
                     (H)
+                    <input type="radio" name="MAC" value="L">Низкая
+                    (L)
+
                 </form>
             </div>
 
             <div class="col-lg-12">
-                <h4>Плотность целей (TD):</h4>
-                <form class="btn-group btn-group-justified" name="TD">
-                    <input type="radio" name="TD" value="ND">Не определено (ND)
-                    <input type="radio" name="TD" value="N">Отсутствует
-                    (N)
-                    <input type="radio" name="TD" value="L">Низкая (L)
-                    <input type="radio" name="TD" value="M">Средняя
-                    (M)
-                    <input type="radio" name="TD" value="H">Высокая
+                <h4>Уровень привилегий (корр.) (MPR):</h4>
+                <form class="btn-group btn-group-justified" id="MPR">
+                    <input type="radio" name="MPR" value="X">Не определено (X)
+                    <input type="radio" name="MPR" value="H">Высокая (H)
+                    <input type="radio" name="MPR" value="L">Низкая (L)
+                    <input type="radio" name="MPR" value="N">Не требуется (N)
+                </form>
+            </div>
+
+            <div class="col-lg-12">
+                <h4>Взаимодействие с пользователем (корр.) (MUI):</h4>
+                <form class="btn-group btn-group-justified" name="MAC">
+                    <input type="radio" name="MUI" value="X">Не определено (X)
+                    <input type="radio" name="MUI" value="R">Требуется
                     (H)
+                    <input type="radio" name="MUI" value="N">Не требуется
+                    (L)
+
+                </form>
+            </div>
+            <div class="col-lg-12">
+                <h4>Влияние на другие компоненты системы (корр.) (MS):</h4>
+                <form class="btn-group btn-group-justified" name="MS">
+                    <input type="radio" name="MS" value="X">Не определено(X)
+                    <input type="radio" name="MS" value="U">Не оказывает
+                    (U)
+                    <input type="radio" name="MS" value="C">Оказывает
+                    (C)
+
                 </form>
             </div>
 
             <div class="col-lg-12">
-                <h4>Требования к конфиденциальности:</h4>
-                <form class="btn-group btn-group-justified" id="CR">
-                    <input type="radio" name="CR" value="ND">Не определено (ND)
-                    <input type="radio" name="CR" value="L">Низкая (L)
-                    <input type="radio" name="CR" value="M">Средняя (M)
-                    <input type="radio" name="CR" value="H">Высокая (H)
+                <h4>Влияние на конфиденциальность (корр.) (MС):</h4>
+                <form class="btn-group btn-group-justified" id="MC">
+                    <input type="radio" name="MC" value="X">Не определено (X)
+                    <input type="radio" name="MC" value="N">Не оказывает (N)
+                    <input type="radio" name="MC" value="L">Низкий (L)
+                    <input type="radio" name="MC" value="H">Высокое (H)
                 </form>
             </div>
-
             <div class="col-lg-12">
-                <h4>Требования к целостности:</h4>
-                <form class="btn-group btn-group-justified" id="IR">
-                    <input type="radio" name="IR" value="ND">Не определено (ND)
-                    <input type="radio" name="IR" value="L">Низкая (L)
-                    <input type="radio" name="IR" value="M">Средняя
-                    (M)
-                    <input type="radio" name="IR" value="H">Высокая
-                    (H)
-                </form>
-            </div>
-
-            <div class="col-lg-12">
-                <h4>Требования к доступности:</h4>
-                <form class="btn-group btn-group-justified" id="AR">
-                    <input type="radio" name="AR" value="ND">Не определено (ND)
-                    <input type="radio" name="AR" value="L">Низкая (L)
-                    <input type="radio" name="AR" value="M">Средняя (M)
-                    <input type="radio" name="AR" value="H">Высокая (H)
+                <h4>Влияние на целостность (корр.) (MI):</h4>
+                <form class="btn-group btn-group-justified" id="MC">
+                    <input type="radio" name="MI" value="X">Не определено (X)
+                    <input type="radio" name="MI" value="N">Не оказывает (N)
+                    <input type="radio" name="MI" value="L">Низкий (L)
+                    <input type="radio" name="MI" value="H">Высокое (H)
                 </form>
             </div>
             <button class="button-add" onclick="calculateContext(event)">Calculate</button>

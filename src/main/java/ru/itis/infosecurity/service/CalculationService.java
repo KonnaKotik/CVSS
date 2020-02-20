@@ -222,88 +222,173 @@ public class CalculationService {
     }
 
     private void addParamsForContext(ContextForm contextForm) {
-        String CDP = contextForm.getCDP();
-        switch (CDP) {
-            case "ND":
-                params.put("CDP", 0.0);
+        String MAV = contextForm.getMAV();
+        switch (MAV) {
+            case "X":
+                params.put("MAV", params.get("AV"));
                 break;
             case "N":
-                params.put("CDP", 0.0);
+                params.put("MAV", 0.85);
+                break;
+            case "A":
+                params.put("MAV", 0.62);
                 break;
             case "L":
-                params.put("CDP", 0.1);
+                params.put("MAV", 0.55);
                 break;
-            case "LM":
-                params.put("CDP", 0.3);
-                break;
-            case "MH":
-                params.put("CDP", 0.4);
-                break;
-            case "H":
-                params.put("CDP", 0.5);
+            case "P":
+                params.put("MAV", 0.2);
                 break;
         }
-        String TD = contextForm.getTD();
-        switch (TD) {
-            case "ND":
-                params.put("TD", 1.0);
+        String MAC = contextForm.getMAC();
+        switch (MAC) {
+            case "X":
+                params.put("X", params.get("AC") );
+                break;
+            case "L":
+                params.put("X", 0.77);
+                break;
+            case "H":
+                params.put("X", 0.44);
+                break;
+        }
+        String MS = contextForm.getMS();
+        switch (MS) {
+            case "X":
+                params.put("MS", params.get("S"));
                 break;
             case "N":
-                params.put("TD", 0.0);
+                params.put("MS", 0.0);
+                break;
+            case "C":
+                params.put("MS", 1.0);
+        }
+        String MPR = contextForm.getCR();
+        switch (MPR) {
+            case "X":
+                params.put("MPR", params.get("PR"));
+                break;
+            case "N":
+                params.put("MPR", 0.85);
                 break;
             case "L":
-                params.put("TD", 0.25);
-                break;
-            case "M":
-                params.put("TD", 0.75);
+                if(params.get("MS") == 1) {
+                    params.put("MPR", 0.68);
+                }
+                params.put("MPR", 0.62);
                 break;
             case "H":
-                params.put("TD", 1.0);
+                if(params.get("MS") == 1) {
+                    params.put("MPR", 0.5);
+                }
+                params.put("MPR", 0.27);
                 break;
         }
+        String MUI = contextForm.getMUI();
+        switch (MUI) {
+            case "X":
+                params.put("MUI", params.get("UI"));
+                break;
+            case "N":
+                params.put("MUI", 0.85);
+                break;
+            case "R":
+                params.put("MUI", 0.62);
+                break;
+        }
+        String MC = contextForm.getMC();
+        switch (MC) {
+            case "X":
+                params.put("MC", params.get("C"));
+                break;
+            case "N":
+                params.put("MC", 0.0);
+                break;
+            case "L":
+                params.put("MC", 0.22);
+                break;
+            case "H":
+                params.put("MC", 0.56);
+                break;
+        }
+
+        String MI = contextForm.getMI();
+        switch (MI) {
+            case "X":
+                params.put("MI", params.get("I"));
+                break;
+            case "N":
+                params.put("MI", 0.0);
+                break;
+            case "L":
+                params.put("MI", 0.22);
+                break;
+            case "H":
+                params.put("MI", 0.56);
+                break;
+        }
+
+        String MA = contextForm.getMC();
+        switch (MA) {
+            case "X":
+                params.put("MA", params.get("A"));
+                break;
+            case "N":
+                params.put("MA", 0.0);
+                break;
+            case "L":
+                params.put("MA", 0.22);
+                break;
+            case "H":
+                params.put("MA", 0.56);
+                break;
+        }
+
         String CR = contextForm.getCR();
         switch (CR) {
-            case "ND":
+            case "X":
+                params.put("CR", 1.0);
+                break;
+            case "H":
+                params.put("CR", 1.5);
+                break;
+            case "M":
                 params.put("CR", 1.0);
                 break;
             case "L":
                 params.put("CR", 0.5);
                 break;
-            case "M":
-                params.put("CR", 1.0);
-                break;
-            case "H":
-                params.put("CR", 1.51);
-                break;
         }
+
         String IR = contextForm.getIR();
         switch (IR) {
-            case "ND":
+            case "X":
+                params.put("IR", 1.0);
+                break;
+            case "H":
+                params.put("IR", 1.5);
+                break;
+            case "M":
                 params.put("IR", 1.0);
                 break;
             case "L":
                 params.put("IR", 0.5);
                 break;
-            case "M":
-                params.put("IR", 1.0);
-                break;
-            case "H":
-                params.put("IR", 1.51);
-                break;
         }
+
         String AR = contextForm.getAR();
         switch (AR) {
-            case "ND":
+            case "X":
+                params.put("AR", 1.0);
+                break;
+            case "H":
+                params.put("AR", 1.5);
+                break;
+            case "M":
                 params.put("AR", 1.0);
                 break;
             case "L":
                 params.put("AR", 0.5);
-                break;
-            case "M":
-                params.put("AR", 1.0);
-                break;
-            case "H":
-                params.put("AR", 1.51);
                 break;
         }
     }

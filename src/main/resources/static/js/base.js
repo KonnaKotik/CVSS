@@ -119,7 +119,7 @@ function calculateTime(event) {
         data: {
             "E": e_value,
             "RL": rl_value,
-            "RC": rc_value
+            "RC": rc_value,
         },
         success: function (data) {
             console.log(data);
@@ -130,23 +130,70 @@ function calculateTime(event) {
 }
 
 function calculateContext(event) {
-    var cdp = document.forms[11];
-    var cdp_value = "";
-    for (i = 0; i < cdp.length; i++) {
-        if (cdp[i].checked) {
-            cdp_value = cdp[i].value;
+    var mav = document.forms[11];
+    var mav_value = "";
+    for (i = 0; i < mav.length; i++) {
+        if (mav[i].checked) {
+            mav_value = mav[i].value;
         }
     }
 
-    var td = document.forms[12];
-    var td_value = "";
-    for (i = 0; i < td.length; i++) {
-        if (td[i].checked) {
-            td_value = td[i].value;
+    var mac = document.forms[12];
+    var mac_value = "";
+    for (i = 0; i < mac.length; i++) {
+        if (mac[i].checked) {
+            mac_value = mac[i].value;
         }
     }
 
-    var cr = document.forms[13];
+    var mpr = document.forms[13];
+    var mpr_value = "";
+    for (i = 0; i < mpr.length; i++) {
+        if (mpr[i].checked) {
+            mpr_value = mpr[i].value;
+        }
+    }
+
+    var mui = document.forms[14];
+    var mui_value = "";
+    for (i = 0; i < mui.length; i++) {
+        if (mui[i].checked) {
+            mui_value = mui[i].value;
+        }
+    }
+
+    var ms = document.forms[15];
+    var ms_value = "";
+    for (i = 0; i < ms.length; i++) {
+        if (ms[i].checked) {
+            ms_value = ms[i].value;
+        }
+    }
+    var mc = document.forms[16];
+    var mc_value = "";
+    for (i = 0; i < mc.length; i++) {
+        if (mc[i].checked) {
+            mc_value = mc[i].value;
+        }
+    }
+
+    var mi = document.forms[17];
+    var mi_value = "";
+    for (i = 0; i < mi.length; i++) {
+        if (mi[i].checked) {
+            mi_value = mi[i].value;
+        }
+    }
+
+    var ma = document.forms[18];
+    var ma_value = "";
+    for (i = 0; i < ma.length; i++) {
+        if (ma[i].checked) {
+            ma_value = ma[i].value;
+        }
+    }
+
+    var cr = document.forms[19];
     var cr_value = "";
     for (i = 0; i < cr.length; i++) {
         if (cr[i].checked) {
@@ -154,7 +201,7 @@ function calculateContext(event) {
         }
     }
 
-    var ir = document.forms[14];
+    var ir = document.forms[20];
     var ir_value = "";
     for (i = 0; i < ir.length; i++) {
         if (ir[i].checked) {
@@ -162,7 +209,7 @@ function calculateContext(event) {
         }
     }
 
-    var ar = document.forms[15];
+    var ar = document.forms[21];
     var ar_value = "";
     for (i = 0; i < ar.length; i++) {
         if (ar[i].checked) {
@@ -170,14 +217,20 @@ function calculateContext(event) {
         }
     }
 
-    console.log(cdp_value + td_value + cr_value + ir_value + ar_value);
+    console.log(mav_value + mac_value + mpr_value + mui_value + ms_value + mc_value + mi_value + ma_value);
 
     $.ajax({
         url: "/ajax/calculateContext",
         type: "post",
         data: {
-            "CDP": cdp_value,
-            "TD": td_value,
+            "MAV": mav_value,
+            "MAC": mac_value,
+            "MPR": mpr_value,
+            "MUI": mui_value,
+            "MS": ms_value,
+            "MC": mc_value,
+            "MI": mi_value,
+            "MA": ma_value,
             "CR": cr_value,
             "IR": ir_value,
             "AR": ar_value
